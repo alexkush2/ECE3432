@@ -14,12 +14,12 @@ catkin_make
 roscd racecar
 mkdir scripts
 cd scripts
-cp ~/ECE3432/talker.py ~/catkin_ws/src/racecar/scripts
+cp ~/ECE3432/HW5/talker.py ~/catkin_ws/src/racecar/scripts
 #wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
 chmod +x talker.py
 roscd racecar/scripts/
 #wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
-cp ~/ECE3432/listener.py ~/catkin_ws/src/racecar/scripts
+cp ~/ECE3432/HW5/listener.py ~/catkin_ws/src/racecar/scripts
 chmod +x listener.py
 cd ~/catkin_ws
 catkin_make
