@@ -30,8 +30,10 @@ def listener():
     try:
         rospy.spin()
     except (KeyboardInterrupt, SystemExit):
+        print "end"
         s.pulse(0.15)
         t.pulse(0.15)
+        print "endl"
 
 
 if __name__ == '__main__':
