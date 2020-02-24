@@ -6,9 +6,10 @@ This can control the car over wifi using ROS
 ```
 ### To Run Program
 On talker PC run 
-````
+```
 roscore
 ```
+
 Then in another terminal run
 ```
 ./talkerPi.py
