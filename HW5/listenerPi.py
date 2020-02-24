@@ -15,6 +15,7 @@ def callbackSteer(data):
 
 def callbackThrottle(data):
     rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f', data.data)
+    t.pulse(float(data.data))
 
 
 def listener():
