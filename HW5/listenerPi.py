@@ -6,6 +6,8 @@ from rpiHAT import ServoNT
 import time
 # used Float32 as datatype so that it can contain a fractional value for the dutycycle
 
+s=ServoNT(channel=1, freq=94.5)
+
 def callbackSteer(data):
     rospy.loginfo(rospy.get_caller_id() + 'I heard steer %f', data.data)
     s.pulse(float(data.data))
@@ -17,7 +19,7 @@ def callbackSteer(data):
 #     rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f,' data )
 
 def listener():
-    s=ServoNT(channel=1, freq=94.5)
+    
     rospy.init_node('listener', anonymous=True)
 
     rospy.Subscriber('steer', Float32, callbackSteer)
