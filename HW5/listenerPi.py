@@ -26,13 +26,15 @@ def listener():
     rospy.Subscriber('throttle', Float32, callbackThrottle)
 
     # spin() simply keeps python from exiting until this node is stopped
-    rospy.spin()
-
-
-if __name__ == '__main__':
+    
     try:
-        listener()
+        rospy.spin()
     except (KeyboardInterrupt, SystemExit):
         s.pulse(0.15)
         t.pulse(0.15)
+
+
+if __name__ == '__main__':
+    listener()
+
 
