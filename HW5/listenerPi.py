@@ -22,7 +22,7 @@ def listener():
     rospy.init_node('listener', anonymous=True)
 
     rospy.Subscriber('steer', Float32, callbackSteer)
-    rospy.Subscriber('throttle', Float32, callbackThrottle))
+    rospy.Subscriber('throttle', Float32, callbackThrottle)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
