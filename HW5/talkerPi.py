@@ -9,7 +9,6 @@ def talker():
     # create two plublish things for steering and throttle
     pubSteer = rospy.Publisher('steer', Float32, queue_size=10)
     # pubThrottle = rospy.Publisher('throttle', Float32, queue_size=10)
-    # pubDrive = rospy.Publisher('drive', Float32, queue_size=10)
 
     # start ros node
     rospy.init_node('talker', anonymous=True)
@@ -20,7 +19,7 @@ def talker():
         rospy.loginfo(steer)
         pubSteer.publish(steer)
         # rospy.loginfo(throttle)
-        # pubSteer.publish(throttle)
+        # pubThrottle.publish(throttle)
         rate.sleep()
 
 if __name__ == '__main__':

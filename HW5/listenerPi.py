@@ -7,6 +7,7 @@ import time
 # used Float32 as datatype so that it can contain a fractional value for the dutycycle
 
 s=ServoNT(channel=1, freq=94.5)
+t=ServoNT(channel=2, freq=94.5)
 
 def callbackSteer(data):
     rospy.loginfo(rospy.get_caller_id() + 'I heard steer %f', data.data)
@@ -15,21 +16,22 @@ def callbackSteer(data):
 # def callbackThrottle(data):
 #     rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f', data.data)
 
-# def callbackDrive(data):
-#     rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f,' data )
 
 def listener():
     
     rospy.init_node('listener', anonymous=True)
 
     rospy.Subscriber('steer', Float32, callbackSteer)
-    # rospy.Subscriber('throttle', Float32, callbackThrottle)
-    #rospy.Subscriber('drive', Float32, callbackDrive)
+    # rospy.Subscriber('throttle', Float32, callbackThrottle))
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
 
 
 if __name__ == '__main__':
-    listener()
+    try:
+        listener()
+    except (KeyboardInterrupt, SystemExit):
+        s.pulse(0.15)
+        t.pulse(0.15)
 
