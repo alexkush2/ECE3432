@@ -5,8 +5,7 @@ from std_msgs.msg import Float32
 import sys
 # used Float32 as datatype so that it can contain a fractional value for the dutycycle
 
-def talker():
-    
+def talker():    
     # create two plublish things for steering and throttle
     pubSteer = rospy.Publisher('steer', Float32, queue_size=10)
     # pubThrottle = rospy.Publisher('throttle', Float32, queue_size=10)
