@@ -13,8 +13,8 @@ def callbackSteer(data):
     rospy.loginfo(rospy.get_caller_id() + 'I heard steer %f', data.data)
     s.pulse(float(data.data))
 
-# def callbackThrottle(data):
-#     rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f', data.data)
+def callbackThrottle(data):
+    rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f', data.data)
 
 
 def listener():
@@ -22,7 +22,7 @@ def listener():
     rospy.init_node('listener', anonymous=True)
 
     rospy.Subscriber('steer', Float32, callbackSteer)
-    # rospy.Subscriber('throttle', Float32, callbackThrottle))
+    rospy.Subscriber('throttle', Float32, callbackThrottle))
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
