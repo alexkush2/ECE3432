@@ -1,33 +1,25 @@
 #!/usr/bin/env python
 
 import rospy
-from std_msgs.msg import Float32
+from sensor_msgs.msg import Joy
 
-# used Float32 as datatype so that it can contain a fractional value for the dutycycle
 
-# def callbackSteer(data):
-#     rospy.loginfo(rospy.get_caller_id() + 'I heard steer %f', data.data)
+def callback(data):
+    rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.axes)
+    # duty cycle in range [0.10, 0.20]
 
-# def callbackThrottle(data):
-#     rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f', data.data)
-def truncate(n, decimals=0):
-    multiplier = 10 ** decimals
-    return float(int(n * multiplier) / multiplier)
+    steer = (data.axes[0]*.05)+.15
+    #steering.pulse(steer)
+    rospy.loginfo(rospy.get_caller_id() + 'steering: %s, duty cycle %f', data.axes[0], steer)
 
-def callbackDrive(data):
-    print('fuck you!')
-    data = float(data.data)
-    throt = float(truncate(data))/100
-    steer = data-truncate(data)
-    rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f, and steering %f', throt, steer)
+    throttle = (data.axes[1]*.05)+.15
+    #throttle.pulse(throttle)
+    rospy.loginfo(rospy.get_caller_id() + 'throttle: %s, duty cycle %f', data.axes[1], throttle)
 
 def listener():
-    print("fuck dis shit")
     rospy.init_node('listener', anonymous=True)
 
-    # rospy.Subscriber('steer', Float32, callbackSteer)
-    # rospy.Subscriber('throttle', Float32, callbackThrottle)
-    rospy.Subscriber('drive', Float32, callbackDrive)
+    rospy.Subscriber('joy', Joy, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()

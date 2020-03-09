@@ -21,3 +21,5 @@ cp ~/ECE3432/HW6/listener.py ~/catkin_ws/src/racecar/scripts
 chmod +x listener.py
 cd ~/catkin_ws
 catkin_make
+
+rosparam set joy_node/dev "/dev/input/js0" 

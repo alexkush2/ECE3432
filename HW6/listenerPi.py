@@ -1,42 +1,28 @@
 #!/usr/bin/env python
 
 import rospy
-from std_msgs.msg import Float32
-from rpiHAT import ServoNT
-import time
-# used Float32 as datatype so that it can contain a fractional value for the dutycycle
+from sensor_msgs.msg import Joy
 
-s=ServoNT(channel=1, freq=94.5)
-t=ServoNT(channel=2, freq=94.5)
 
-def callbackSteer(data):
-    rospy.loginfo(rospy.get_caller_id() + 'I heard steer %f', data.data)
-    s.pulse(float(data.data))
+def callback(data):
+    rospy.loginfo(rospy.get_caller_id() + 'I heard %s', data.axes)
+    # duty cycle in range [0.10, 0.20]
 
-def callbackThrottle(data):
-    rospy.loginfo(rospy.get_caller_id() + 'I heard throttle %f', data.data)
-    t.pulse(float(data.data))
+    steer = (data.axes[0]*.05)+.15
+    #steering.pulse(steer)
+    rospy.loginfo(rospy.get_caller_id() + 'steering: %s, duty cycle %f', data.axes[0], steer)
 
+    throttle = (data.axes[1]*.05)+.15
+    #throttle.pulse(throttle)
+    rospy.loginfo(rospy.get_caller_id() + 'throttle: %s, duty cycle %f', data.axes[1], throttle)
 
 def listener():
-    
     rospy.init_node('listener', anonymous=True)
 
-    rospy.Subscriber('steer', Float32, callbackSteer)
-    rospy.Subscriber('throttle', Float32, callbackThrottle)
+    rospy.Subscriber('joy', Joy, callback)
 
     # spin() simply keeps python from exiting until this node is stopped
-    
-    try:
-        rospy.spin()
-    except (KeyboardInterrupt, SystemExit):
-        print "end"
-        s.pulse(0.15)
-        t.pulse(0.15)
-        print "endl"
-
+    rospy.spin()
 
 if __name__ == '__main__':
     listener()
-
-
