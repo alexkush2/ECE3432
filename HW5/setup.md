@@ -21,3 +21,8 @@ export ROS_MASTER_URI:<hostIP>:11311
 export ROS_IP:<clientIP>
 ./listenerPi.py
 ```
+
+## To rebuild project
+```
+./HW5_Rebuild.sh
+```
