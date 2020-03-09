@@ -16,7 +16,7 @@ def callback(data):
     s.pulse(steer)
     rospy.loginfo(rospy.get_caller_id() + ' steering: %s, duty cycle %f', data.axes[0], steer)
 
-    throttle = (data.axes[0]*.05)+.15
+    throttle = (data.axes[4]*.05)+.15
     t.pulse(throttle)
     rospy.loginfo(rospy.get_caller_id() + ' throttle: %s, duty cycle %f', data.axes[1], throttle)
 
