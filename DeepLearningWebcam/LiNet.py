@@ -9,11 +9,12 @@ class LiNet:
     def __init__(self, netname='AlexNet'):
         if netname == 'AlexNet':
             self.net = models.alexnet(pretrained=True)
+            self.size = 256
         else:
             self.net = None
 
         self.transform = transforms.Compose([          #[1]
-            transforms.Resize(256),                    #[2]
+            transforms.Resize(self.size),              #[2]
             transforms.CenterCrop(224),                #[3]
             transforms.ToTensor(),                     #[4]
             transforms.Normalize(                      #[5]
@@ -23,7 +24,13 @@ class LiNet:
 
 
     def classify(self, imagefile="dog.jpg"):
-        img = Image.open(imagefile)
+        if type(imagefile) == numpy.ndarray: # if its a webcam image
+            imgRGB = cv2.cvtColor(imagefile,cv2.COLOR_BGR2RGB)
+            img = Image.fromarray(imgRGB)
+
+        else:   # if its a file name
+            img = Image.open(imagefile)
+
         img_t = self.transform(img)
         batch_t = torch.unsqueeze(img_t, 0)
         self.net.eval()
@@ -37,3 +44,6 @@ class LiNet:
 
         percentage = torch.nn.functional.softmax(out, dim=1)[0] * 100
         print(labels[index[0]], percentage[index[0]].item())
+        return (labels[index[0]],percentage[index[0]].item())
+
+    
