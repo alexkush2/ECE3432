@@ -2,7 +2,7 @@ import cv2
 import time
 from LiNet import LiNet
 
-classobj = LiNet(netname='AlexNet')
+classobj = LiNet(netname='GoogLeNet')
 
 cam = cv2.VideoCapture(0)
 while True:

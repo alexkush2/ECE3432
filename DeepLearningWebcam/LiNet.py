@@ -7,11 +7,15 @@ import cv2, numpy
 
 class LiNet:
     def __init__(self, netname='AlexNet'):
-        if netname == 'AlexNet':
+        if netname.lower() == 'alexnet':
             self.net = models.alexnet(pretrained=True)
             self.size = 256
+        elif netname.lower() == 'googlenet':
+            self.net = models.googlenet(pretrained=True)
+            self.size = 244
         else:
             self.net = None
+            
 
         self.transform = transforms.Compose([          #[1]
             transforms.Resize(self.size),              #[2]
