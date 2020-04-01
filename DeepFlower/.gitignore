@@ -1,0 +1,4 @@
+*.jpg
+data/
+*.pth
+__pychache__
