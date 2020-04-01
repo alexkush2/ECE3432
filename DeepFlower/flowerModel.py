@@ -37,7 +37,6 @@ class FlowerModel:
                 loss.backward()
                 self.optimizer.step()
 
-
     def pre_processing(self, datadir='./data/'):
         self.transformations = transforms.Compose([
             transforms.RandomResizedCrop(64),
