@@ -57,3 +57,10 @@ class FlowerModel:
         output = self.cnn_model(test_image_tensor)
         class_index = output.data.numpy().argmax()
         return class_index
+    
+    def saveModel(self, PATH="CNN_Model.pth"):
+        torch.save(self.cnn_model, PATH)
+
+    def loadModel(self, PATH="CNN_Model.pth"):
+        self.cnn_model=torch.load(PATH)
+        self.cnn_model.eval()
