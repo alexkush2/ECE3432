@@ -27,9 +27,8 @@ for i in range(0, sz-1):
     fontScale = 1
     color = (255, 0, 0)   
     thickness = 2
-    motor = str(data['motor'][i])
     
-    img = cv2.putText(img, motor, org, font,  fontScale, color, thickness, cv2.LINE_AA) 
+    img = cv2.putText(img, str(steer), org, font,  fontScale, color, thickness, cv2.LINE_AA) 
 
     # show image
     cv2.imshow('image',img)
