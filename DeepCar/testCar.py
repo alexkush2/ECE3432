@@ -1,5 +1,6 @@
 import  cv2
 import pandas as pd
+from time import sleep
 
 
 data = pd.read_csv("data/output_0.csv")
@@ -32,5 +33,6 @@ for i in range(0, sz-1):
 
     # show image
     cv2.imshow('image',img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    cv2.waitKey(50)
+
+cv2.destroyAllWindows()
