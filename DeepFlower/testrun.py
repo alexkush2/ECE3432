@@ -2,9 +2,10 @@ from utility import show_image
 from flowerModel import FlowerModel
 
 a=FlowerModel()
+a.loadModel()
 a.pre_processing()
-a.train(20)
-# a.saveModel()
+#a.train(2)
+#a.saveModel()
 i = a.predict("./data/sunflower/24459548_27a783feda.jpg")
 print(i)
 if i == 0:
@@ -19,3 +20,5 @@ elif i == 4:
     print("tulip")
 else:
     print("thats not a supported flower!")
+
+print(a.test())
