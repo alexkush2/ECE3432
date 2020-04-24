@@ -58,15 +58,19 @@ class ServoNet(Module):
     #
 
     def __init__(self, shape):
+        A = 24
+        B = 36
+        C = 48
+        D = 64
         super(ServoNet, self).__init__()
 
         self.input_size = [3, shape[0], shape[1]]
         self.features = nn.Sequential(
-            Conv2d(3, 24, 3, stride=(2, 2)),
-            Conv2d(24, 36, 3, stride=(2, 2)),
-            Conv2d(36, 48, 3),
-            Conv2d(48, 64, 3),
-            Conv2d(64, 10, 3)
+            Conv2d(3, A, 3, stride=(2, 2)),
+            Conv2d(A, B, 3, stride=(2, 2)),
+            Conv2d(B, C, 3),
+            Conv2d(C, D, 3),
+            Conv2d(D, 10, 3)
         )
 
         self.flat_fts = get_flat_fts(self.input_size, self.features)
