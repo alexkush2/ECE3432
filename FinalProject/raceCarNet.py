@@ -126,11 +126,21 @@ class MotorNet(Module):
         self.flatsize = int(10 * (np.ceil((np.ceil((shape[0] - 2) / 2) - 2) / 2) - 6) * \
                             (np.ceil((np.ceil((shape[1] - 2) / 2) - 2) / 2) - 6))
 
-        self.conv1 = Conv2d(3, 24, 3, stride=(2, 2))
-        self.conv2 = Conv2d(24, 36, 3, stride=(2, 2))
-        self.conv3 = Conv2d(36, 48, 3)
-        self.conv4 = Conv2d(48, 64, 3)
-        self.conv5 = Conv2d(64, 10, 3)
+        # A = 24
+        # B = 36
+        # C = 48
+        # D = 64
+
+        A = 24
+        B = 36
+        C = 48
+        D = 64
+
+        self.conv1 = Conv2d(3, A, 3, stride=(2, 2))
+        self.conv2 = Conv2d(A, B, 3, stride=(2, 2))
+        self.conv3 = Conv2d(B, C, 3)
+        self.conv4 = Conv2d(C, D, 3)
+        self.conv5 = Conv2d(D, 10, 3)
         self.fc1 = Linear(self.flatsize, 10)
         self.fc2 = Linear(10, 1)
 
