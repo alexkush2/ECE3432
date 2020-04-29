@@ -4,7 +4,7 @@ import pandas as pd
 from av_nn_tools import NNTools
 from av_parse_data import ParseData
 
-TEST_LIST = "data/list/file2.csv"
+TEST_LIST = "data/list/test_1.csv"
 SETTINGS = "data/set_accuracy_test.json"
 
 data = pd.read_csv(TEST_LIST)

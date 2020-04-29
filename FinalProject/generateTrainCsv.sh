@@ -9,6 +9,14 @@ then
     num=$1
 fi
 
+# see if data/images exists
+if [ ! -d data/images/ ]
+then
+    # if not download images
+    svn checkout https://github.com/lbaitemple/race-car/trunk/data/images
+fi
+
+
 # see if data/list exists
 if [ -d data/list/ ]
 then

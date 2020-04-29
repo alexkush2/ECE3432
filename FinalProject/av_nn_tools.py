@@ -174,7 +174,7 @@ class NNTools:
 
                 # forward + backward + optimize
                 output = model(input)
-                loss = criterion(output, target)
+                loss = criterion(output[:,-1], target)                                                  # added [:,-1]
                 loss.backward()
                 optimizer.step()
 
@@ -277,7 +277,7 @@ class NNTools:
 
             # forward + loss
             output = model(input)
-            loss = criterion(output, target)
+            loss = criterion(output[:,-1], target)                                              # again added [:,-1]
 
             running_loss += loss.item()
             total_loss += loss.item()
