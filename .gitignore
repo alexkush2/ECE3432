@@ -4844,3 +4844,5 @@ DeepCar/data/output_12.csv
 DeepCar/data/output_13.csv
 DeepCar/data/output_14.csv
 DeepCar/data/output_15.csv
+*.pyc
+.DS_Store

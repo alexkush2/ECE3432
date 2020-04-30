@@ -13,6 +13,8 @@ fi
 if [ ! -d data/images/ ]
 then
     # if not download images
+    mkdir data/images
+    cd data
     svn checkout https://github.com/lbaitemple/race-car/trunk/data/images
 fi
 

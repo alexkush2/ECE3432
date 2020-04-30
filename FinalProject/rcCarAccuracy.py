@@ -1,3 +1,5 @@
+#!/bin/bash
+
 import json
 import pandas as pd
 

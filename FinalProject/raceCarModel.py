@@ -1,3 +1,5 @@
+#!/bin/env  python3
+
 from av_nn_tools import NNTools
 
 TRAIN_DATA = 'data/list/train_1.csv'
