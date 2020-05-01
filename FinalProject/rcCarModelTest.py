@@ -49,5 +49,5 @@ servov=servo_pred.predict(IMAGE_FILE)
 end_time = time.time()
 
 print("\n\nservo: %2.2f" % (100 * servo_count / (index + 1)))
-print(servov)
-print(end_time-start_time)
+print("predicted: " + servov)
+print("time: " + end_time-start_time)
