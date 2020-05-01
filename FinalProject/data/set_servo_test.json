@@ -7,7 +7,7 @@
     "batch_size": 10,
     "epochs": 1,
     
-	"cuda": true,
+	"cuda": false,
 	"optimizer": "adam",
 	
 	"log_file": "log.json",

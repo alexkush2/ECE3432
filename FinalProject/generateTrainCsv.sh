@@ -15,7 +15,9 @@ then
     # if not download images
     mkdir data/images
     cd data
-    svn checkout https://github.com/lbaitemple/race-car/trunk/data/images
+    echo 'downloading images'
+    svn checkout https://github.com/lbaitemple/race-car/trunk/data/images > /dev/null 2>&1
+    cd ..
 fi
 
 
