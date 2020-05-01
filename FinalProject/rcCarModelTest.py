@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 
 import json
 import pandas as pd
@@ -49,5 +49,5 @@ servov=servo_pred.predict(IMAGE_FILE)
 end_time = time.time()
 
 print("\n\nservo: %2.2f" % (100 * servo_count / (index + 1)))
-print("predicted: " + servov)
-print("time: " + end_time-start_time)
+print("predicted: " + str(servov))
+print("time: " + str(end_time-start_time))

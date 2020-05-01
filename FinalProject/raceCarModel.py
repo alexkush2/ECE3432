@@ -1,4 +1,4 @@
-#!/bin/env  python3
+#!/usr/bin/env python3
 
 from av_nn_tools import NNTools
 
